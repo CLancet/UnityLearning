@@ -45,6 +45,31 @@ public class Lesson10 : MonoBehaviour
         print("direction after transform" + this.transform.InverseTransformDirection(Vector3.forward));
 
         #endregion
+
+        #region 知识点二 本地坐标转世界坐标
+        // 点的转化
+        // 会受到缩放影响
+        // 这个很重要！！！！
+        print("local->glabal" + this.transform.TransformPoint(Vector3.forward));
+
+        // 方向的转化
+        // 1.受缩放影响
+        // 方向的相对位置，平移方向向量的起始点，放到物体坐标系的原点
+        print("local->glabal" + this.transform.TransformVector(Vector3.forward));
+        // 2.不受缩放影响
+        // 方向的相对位置，平移方向向量的起始点，放到物体坐标系的原点
+        print("local->glabal" + this.transform.TransformDirection(Vector3.forward));
+
+
+        #endregion
+
+
+        // 总结
+        // 其中最重要的就是 本地坐标系的点转化为世界坐标系的点
+        // 比如玩家现在要在自己面前的n个单位处放一个物体，这些物体不会作为玩家的子对象
+        // 这个时候我们不用去计算世界坐标系的点
+        // 直接使用本地坐标系的点，然后转化为世界坐标系的点即可，
+        // 再在世界坐标系下放置物体/特效创建/攻击范围判断
     }
 
     // Update is called once per frame
